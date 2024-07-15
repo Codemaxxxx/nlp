@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP - News Article</title>
+<script defer src="main.js"></script></head>
+<body>
+
+    <header>
+        <div class="">
+            Logo
+        </div>
+        <div class="">
+            navigation
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <form id="form-id">
+                    <label for="URI">Enter an Article URL:</label>
+                    <input type="text" id="URI" name="input" value="" placeholder="Enter a valid URL">
+                    <button type="submit" value="Analyze">Analyze</button>
+                </form>
+            </div>
+
+        </section>
+        <section>
+            <div id="error" style="display: none;"></div>
+            <div id="analysis">
+                <h2>Analysis:</h2>
+                <div id="loader" style="display: none;"></div>
+        
+                <ul id="analysis-list">
+                    <li id="agreement"></li>
+                    <li id="subjectivity"></li>
+                    <li id="confidence"></li>
+                    <li id="irony"></li>
+                    <li id="score-tag"></li>
+        
+                </ul>
+            </div>
+    
+        </section>
+    </main>
+
+    <footer>
+        <p>This is a footer</p>
+    </footer>
+
+    
+</body>
+</html>
