@@ -19,7 +19,7 @@
     <main>
         <section>
             <div class="container">
-                <form id="form-id">
+                <form id="form-id" onsubmit="return Client.formHandler(event)">
                     <label for="URI">Enter an Article URL:</label>
                     <input type="text" id="URI" name="input" value="" placeholder="Enter a valid URL">
                     <button type="submit" value="Analyze">Analyze</button>

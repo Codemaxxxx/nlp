@@ -1,3 +1,4 @@
+var Client;
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -861,6 +862,25 @@ function styleTagTransform(css, styleElement) {
 }
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./src/client/js/formHandler.js":
+/*!**************************************!*\
+  !*** ./src/client/js/formHandler.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   formHandler: () => (/* binding */ formHandler)
+/* harmony export */ });
+const formHandler = (event) => {
+    event.preventDefault()
+    console.log("Server submit")
+}
+
+
+
 /***/ })
 
 /******/ 	});
@@ -941,17 +961,26 @@ var __webpack_exports__ = {};
   !*** ./src/client/index.js ***!
   \*****************************/
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   formHandler: () => (/* reexport safe */ _js_formHandler__WEBPACK_IMPORTED_MODULE_5__.formHandler)
+/* harmony export */ });
 /* harmony import */ var _styles_base_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/base.scss */ "./src/client/styles/base.scss");
 /* harmony import */ var _styles_footer_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/footer.scss */ "./src/client/styles/footer.scss");
 /* harmony import */ var _styles_form_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/form.scss */ "./src/client/styles/form.scss");
 /* harmony import */ var _styles_header_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/header.scss */ "./src/client/styles/header.scss");
 /* harmony import */ var _styles_resets_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/resets.scss */ "./src/client/styles/resets.scss");
+/* harmony import */ var _js_formHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/formHandler */ "./src/client/js/formHandler.js");
 
 
 
 
 
 
+
+
+
+
+Client = __webpack_exports__;
 /******/ })()
 ;
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=bundle.js.map
