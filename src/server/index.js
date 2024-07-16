@@ -20,8 +20,9 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-    const url = req.body;
-    const Analyzer = analyse(url, Key)
+    const url = req.body.input
+    const Analyzer = await analyse(url, Key)
+    console.log(Analyzer)
 
 })
 

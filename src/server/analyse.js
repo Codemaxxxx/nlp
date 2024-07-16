@@ -7,12 +7,48 @@ const analyse = async (url, key) => {
     const analysis = await axios.get(`${meaningCloud}?key=${key}&url=${url}&lang=en`)
     .then(response => {
         const { code } = response.data.status
-        console.log(code);
+        const { msg } = response.data.status
+        if (code == 100) {
+            return handleError(code, "Please enter a valid URL")
+        }
+        else if (code == 212) {
+            return handleError(code, msg)
+        }
+
+        return handleValid(response.data, code)
     });
 
-    console.log(analysis);
+
+    return analysis
+    //console.log(analysis);
     //console.log("I am getting the information you need")
     //console.log(`url: ${url}, key: ${key}`)
 };
+
+const handleError = (code, msg) => {
+    const error = {
+        code,
+        msg
+    }
+    return error
+}
+
+const handleValid = (data, code) => {
+    const { agreement, subjectivity, confidence, score_tag, irony }  = data
+    const sample = {
+        agreement, 
+        subjectivity, 
+        confidence, 
+        score_tag, 
+        irony 
+    }
+
+    const result = {
+        sample,
+        code
+    }
+
+    return result
+}
 
 module.exports = { analyse }
