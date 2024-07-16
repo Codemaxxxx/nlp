@@ -22,7 +22,13 @@ app.get("/", (req, res) => {
 app.post("/", async (req, res) => {
     const url = req.body.input
     const Analyzer = await analyse(url, Key)
-    console.log(Analyzer)
+    const {code, msg, sample} = Analyzer
+    if(code == 100 || code ==212) {
+       return res.send({msg: msg, code: code})
+    }
+
+    return res.send({sample: sample, code: code })
+    //console.log(Analyzer)
 
 })
 

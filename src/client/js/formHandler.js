@@ -9,6 +9,8 @@ const formHandler = async (event) => {
           'Content-Type': 'application/json'
         }
       })
+
+    console.log(data.msg);
 }
 
 
