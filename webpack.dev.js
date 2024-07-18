@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-wepack-plugin')
 
 module.exports = {
     entry: "./src/client/index.js",
@@ -44,4 +45,11 @@ module.exports = {
             protectWebpackAssets: false
         })
     ],
+
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin(),
+        ],
+        minimize: true,
+    },
 }

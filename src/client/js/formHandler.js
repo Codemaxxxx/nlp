@@ -23,7 +23,7 @@ const agreement = document.getElementById("agreement");
 
 const formHandler = async (event) => {
     event.preventDefault();
-    if (myValidURL(input.value)) {
+    if (!myValidURL(input.value)) {
         show_error("Please enter a valid URL")
         return;
     }

@@ -14,9 +14,10 @@ port = 8000;
 const Key = process.env.API_KEY
 
 app.use(express.json())
+app.use(express.static('dist'))
 
 app.get("/", (req, res) => {
-    res.send("server running")
+    res.render("index.html")
 });
 
 app.post("/", async (req, res) => {
