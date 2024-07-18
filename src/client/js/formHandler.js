@@ -1,4 +1,5 @@
 import axios from "axios";
+import { myValidURL } from "./checkURL";
 
 const input = document.getElementById('URI');
 const form = document.getElementById('form-id');
@@ -21,12 +22,16 @@ const agreement = document.getElementById("agreement");
     })
 
 const formHandler = async (event) => {
-    event.preventDefault()
-    const {data} = await axios.post('http://localhost:8000/', form, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-    })
+    event.preventDefault();
+    if (myValidURL(input.value)) {
+        show_error("Please enter a valid URL")
+        return;
+    }
+        const {data} = await axios.post('http://localhost:8000/', form, {
+            headers: {
+            'Content-Type': 'application/json'
+         }
+     })
 
     //console.log(data);
 
