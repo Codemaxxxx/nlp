@@ -12,7 +12,7 @@ const analyse = async (url, key) => {
             return handleError(code, "Please enter a valid URL")
         }
         else if (code == 212) {
-            return handleError(code, msg)
+            return handleError(code, "No Content to analyse")
         }
 
         return handleValid(response.data, code)
