@@ -2,15 +2,17 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-wepack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
 
 module.exports = {
     entry: "./src/client/index.js",
     mode: "development",
-    devtool: "source-map",
+    devtool: "hidden-source-map",
     output: {
-        filename: 'bundle.js',
+        filename: 'bundle.[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         libraryTarget: 'var',
         library: 'Client',
@@ -35,6 +37,9 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html"
         }),
+        new MiniCssExtractPlugin ({
+            filename: 'style.[contenthash].css'
+        }),
 
         new CleanWebpackPlugin({
             // Simulate the removal of files
@@ -50,6 +55,7 @@ module.exports = {
     optimization: {
         minimizer: [
             new CssMinimizerPlugin(),
+            new TerserPlugin()
         ],
         minimize: true,
     },
