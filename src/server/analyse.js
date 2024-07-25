@@ -6,16 +6,24 @@ const analyse = async (url, key) => {
 
     const analysis = await axios.get(`${meaningCloud}?key=${key}&url=${url}&lang=en`)
     .then(response => {
-        const { code } = response.data.status
-        const { msg } = response.data.status
-        if (code == 100) {
-            return handleError(code, "Please enter a valid URL")
+        if (response.data && response.data.status) {
+            const { code } = response.data.status
+            const { msg } = response.data.status
+            if (code == 100) {
+                return handleError(code, "Please enter a valid URL")
+            }
+            else if (code == 212) {
+                return handleError(code, "No Content to analyse")
+            }
+    
+            return handleValid(response.data, code)
+        } else {
+            return handleError(null, "Unexpected response format");
         }
-        else if (code == 212) {
-            return handleError(code, "No Content to analyse")
-        }
-
-        return handleValid(response.data, code)
+    })
+    .catch(error => {
+        console.error('Error during API call:', error);
+        return handleError(null, 'API call failed');
     });
 
 
